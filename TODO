@@ -1,0 +1,48 @@
+Basic App Structure
+===================
+
+/home
+-----------
+	Shows a all the pits a user is in and provides a running list of all the links added to their pits recently. 
+
+Check login status
+Get all pit ID's the user is a part of. 
+Get links newer than 72 hours that have a pit_id matching the user's pits.
+Display links in the form "Tim added a <link> to <Bullpit#1>" with a timestamp in the form of "2 days ago"
+
+/user
+-----------
++ /user/[name]
+	Shows a user's profile, including the pits they're in and their recent links. 
+
+Display links to all the pits a user is part of. 
+Get most recent links a user has added to Bullpit in the form "Tim added a <link> to <Bullpit#1>" with a timestamp in the form of "2 days ago"
+Diplay links in reverse chron.
+
+/pit
+-----------
++ /pit/[id]
+	Displays the feed of all the links in a given pit in reverse chronological order.
+
+--
+Find all links with the pit id that's requested in the call. Limit 100. 
+Put those link id's into an array. 
+For each link_id in the array, find the stars that have a link_id matching anything in that array and grab their associated users and state. 
+Parse the returned array to display each link and its associated star as an HTML object (probably an <li class="link no_star"></li>)
+
++ /pit/create
+	Allows a user to create a new pit. Only required field is name.
+
++ /pit/invite
+	Allows a user to invite others to a given pit
+
++ /pit/destroy
+	Destroys a pit.
+
+/link
+-----------
++ /link/add
+	Allows a user to add a link to a pit. GET requests display a form, POST requests insert a link.
+
++ /link/[id]
+	Displays a single link with a given ID
