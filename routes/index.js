@@ -4,5 +4,5 @@
  */
 
 exports.index = function(req, res){
-  res.render('index', { title: 'Bullpit 2.0' });
+  res.render('index', { title: 'Bullpit 1.0' });
 };

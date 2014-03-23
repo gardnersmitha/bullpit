@@ -6,6 +6,7 @@
 var express = require('express');
 var routes = require('./routes');
 var user = require('./routes/user');
+var login = require('./routes/login');
 var http = require('http');
 var path = require('path');
 var hbs = require('hbs');
@@ -29,12 +30,17 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+//Firebase Setup
+var firebase = require('firebase');
+var bullpitRef = new firebase('https://bullpit.firebaseio.com/');
+
+//Routing
 app.get('/', routes.index);
 app.get('/users', user.list);
+app.get('/login', login.login);
 
+
+//Create web server
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
-
-
-//Adding a comment to see if my local repo is set up. 
